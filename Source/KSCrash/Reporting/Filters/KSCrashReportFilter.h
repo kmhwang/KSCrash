@@ -96,6 +96,7 @@ typedef void(^KSCrashReportFilterCompletion)(NSArray* filteredReports,
  */
 - (id) initWithFiltersAndKeys:(id)firstFilter, ... NS_REQUIRES_NIL_TERMINATION;
 
+- (id) initWithFilters:(NSArray*) filters keys:(NSArray*) keys;
 @end
 
 
@@ -121,6 +122,9 @@ typedef void(^KSCrashReportFilterCompletion)(NSArray* filteredReports,
  * @param firstFilter The first filter, followed by filter, filter, ...
  */
 - (id) initWithFilters:(id) firstFilter, ... NS_REQUIRES_NIL_TERMINATION;
+
+
+- (id) initWithFiltersArray:(NSArray*) filters;
 
 - (void) addFilter:(id<KSCrashReportFilter>) filter;
 
@@ -181,6 +185,7 @@ typedef void(^KSCrashReportFilterCompletion)(NSArray* filteredReports,
 - (id) initWithSeparatorFmt:(NSString*) separatorFmt
                        keys:(id) firstKey, ... NS_REQUIRES_NIL_TERMINATION;
 
+- (id) initWithSeparatorFmt:(NSString*) separatorFmt keysArray:(NSArray*) keys;
 @end
 
 
@@ -203,5 +208,7 @@ typedef void(^KSCrashReportFilterCompletion)(NSArray* filteredReports,
  * @param firstKeyPath Series of key paths to search in the source reports.
  */
 - (id) initWithKeys:(id) firstKeyPath, ... NS_REQUIRES_NIL_TERMINATION;
+
+- (id) initWithKeysArray:(NSArray*) keyPaths;
 
 @end
