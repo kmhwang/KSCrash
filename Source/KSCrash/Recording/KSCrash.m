@@ -113,6 +113,26 @@
 #pragma mark - Lifecycle -
 // ============================================================================
 
+- (void) setDemangleLanguages:(KSCrashDemangleLanguage)demangleLanguages
+{
+    self.crashReportStore.demangleCPP = (demangleLanguages & KSCrashDemangleLanguageCPlusPlus) != 0;
+    self.crashReportStore.demangleSwift = (demangleLanguages & KSCrashDemangleLanguageSwift) != 0;
+}
+
+- (KSCrashDemangleLanguage) demangleLanguages
+{
+    KSCrashDemangleLanguage languages = 0;
+    if(self.crashReportStore.demangleCPP)
+    {
+        languages |= KSCrashDemangleLanguageCPlusPlus;
+    }
+    if(self.crashReportStore.demangleSwift)
+    {
+        languages |= KSCrashDemangleLanguageSwift;
+    }
+    return languages;
+}
+
 IMPLEMENT_EXCLUSIVE_SHARED_INSTANCE(KSCrash)
 
 - (id) init
@@ -533,7 +553,7 @@ SYNTHESIZE_CRASH_STATE_PROPERTY(BOOL, crashedLastLaunch)
 
 
 //! Project version number for KSCrashFramework.
-const double KSCrashFrameworkVersionNumber = 1.80;
+const double KSCrashFrameworkVersionNumber = 1.85;
 
 //! Project version string for KSCrashFramework.
-const unsigned char KSCrashFrameworkVersionString[] = "1.8.0";
+const unsigned char KSCrashFrameworkVersionString[] = "1.8.5";

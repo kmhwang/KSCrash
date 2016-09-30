@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   IOS_DEPLOYMENT_TARGET = '6.0' unless defined? IOS_DEPLOYMENT_TARGET
   s.name         = "KSCrash"
-  s.version      = "1.8.0"
+  s.version      = "1.8.5"
   s.summary      = "The Ultimate iOS Crash Reporter"
   s.homepage     = "https://github.com/kstenerud/KSCrash"
   s.license     = { :type => 'KSCrash license agreement', :file => 'LICENSE' }
@@ -15,18 +15,11 @@ Pod::Spec.new do |s|
   s.xcconfig = { 'GCC_ENABLE_CPP_EXCEPTIONS' => 'YES' }
   s.default_subspecs = 'Installations'
 
-  s.subspec 'no-arc' do |sp|
-    sp.source_files = 'Source/KSCrash/Recording/**/KSZombie.{h,m}'
-    sp.requires_arc = false
-  end
-
   s.subspec 'Recording' do |recording|
-    recording.dependency 'KSCrash/no-arc'
     recording.source_files   = 'Source/KSCrash/Recording/**/*.{h,m,mm,c,cpp}',
                                'Source/KSCrash/llvm/**/*.{h,m,mm,c,cpp}',
                                'Source/KSCrash/swift/**/*.{h,m,mm,c,cpp}',
                                'Source/KSCrash/Reporting/Filters/KSCrashReportFilter.h'
-    recording.exclude_files = 'Source/KSCrash/Recording/**/KSZombie.{h,m}'
     recording.public_header_files = 'Source/KSCrash/Recording/KSCrash.h',
                                     'Source/KSCrash/Recording/KSCrashC.h',
                                     'Source/KSCrash/Recording/KSCrashContext.h',
@@ -59,7 +52,6 @@ Pod::Spec.new do |s|
     tools.dependency 'KSCrash/Recording'
     # Just add .h files; the .m files are all compiled in the Recording spec
     tools.source_files = 'Source/KSCrash/Recording/Tools/*.h'
-    tools.exclude_files = 'Source/KSCrash/Recording/Tools/KSZombie.h'
   end
 
   s.subspec 'Reporting' do |reporting|
