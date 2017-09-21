@@ -11,18 +11,7 @@
 #import "CrashTesterCommands.h"
 #import "Configuration.h"
 
-#import <KSCrash/KSCrashAdvanced.h>
-#import <KSCrash/KSCrashReportFilterSets.h>
-#import <KSCrash/KSCrashReportFilter.h>
-#import <KSCrash/KSCrashReportFilterAppleFmt.h>
-#import <KSCrash/KSCrashReportFilterBasic.h>
-#import <KSCrash/KSCrashReportFilterGZip.h>
-#import <KSCrash/KSCrashReportFilterJSON.h>
-#import <KSCrash/KSCrashReportSinkConsole.h>
-#import <KSCrash/KSCrashReportSinkEMail.h>
-#import <KSCrash/KSCrashReportSinkQuincyHockey.h>
-#import <KSCrash/KSCrashReportSinkStandard.h>
-#import <KSCrash/KSCrashReportSinkVictory.h>
+#import <KSCrash/KSCrash.h>
 
 @interface AppDelegate ()
 
@@ -69,7 +58,6 @@ static void onCrash(const KSCrashReportWriter* writer)
 #endif
 
     handler.deadlockWatchdogInterval = 5.0f;
-    handler.printTraceToStdout = YES;
     handler.onCrash = onCrash;
     handler.userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                         @"\"quote\"", @"quoted value",

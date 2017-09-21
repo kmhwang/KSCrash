@@ -27,7 +27,6 @@
 
 #import <XCTest/XCTest.h>
 
-#import "KSCrashCallCompletion.h"
 #import "KSCrashReportFilter.h"
 #import "KSCrashReportFilterBasic.h"
 #import "KSCrashReportFilterGZip.h"
@@ -112,7 +111,7 @@
 
 - (void) onTimeUp
 {
-    kscrash_i_callCompletion(self.onCompletion, self.reports, self.completed, self.error);
+    kscrash_callCompletion(self.onCompletion, self.reports, self.completed, self.error);
 }
 
 @end

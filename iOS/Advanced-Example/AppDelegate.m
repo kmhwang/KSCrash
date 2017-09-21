@@ -11,7 +11,6 @@
 #import <KSCrash/KSCrashInstallationEmail.h>
 #import <KSCrash/KSCrashInstallationVictory.h>
 #import <KSCrash/KSCrash.h>
-#import <KSCrash/KSCrashAdvanced.h>
 
 
 /* More advanced crash reporting example.
@@ -164,9 +163,6 @@ static void advanced_crash_callback(const KSCrashReportWriter* writer)
     handler.deadlockWatchdogInterval = 8;
     handler.userInfo = @{@"someKey": @"someValue"};
     handler.onCrash = advanced_crash_callback;
-    handler.printTraceToStdout = YES;
-    handler.searchThreadNames = YES;
-    handler.searchQueueNames = YES;
 
     // Do not introspect class SensitiveInfo (see MainVC)
     // When added to the "do not introspect" list, the Objective-C introspector
