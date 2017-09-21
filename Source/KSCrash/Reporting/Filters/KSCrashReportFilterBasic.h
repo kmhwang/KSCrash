@@ -91,6 +91,7 @@
  * @param firstFilter The first filter, followed by filter, filter, ...
  */
 - (id) initWithFilters:(id) firstFilter, ... NS_REQUIRES_NIL_TERMINATION;
+- (id) initWithFiltersArray:(NSArray*) filters;
 
 - (void) addFilter:(id<KSCrashReportFilter>) filter;
 
